@@ -4,13 +4,13 @@
         "unit": "kg",
         "stok": "5",
         "harga_satuan": 2000000,
-        "barang": "Gambar Kulkas"
+        "barang": "http://localhost:8080/uploads/barang-1692464523966-pbp.jpg"
     },
     {
         "name_item": "Televisi",
         "unit": "kg",
         "stok": "2",
         "harga_satuan": 1000000,
-        "barang": "Gambar Televisi"
+        "barang": "http://localhost:8080/uploads/barang-1692464529683-tecnopreneurship.jpg"
     }
 ]

@@ -8,38 +8,40 @@
                     <h4> Add Items </h4>
                 </div>
                 <div class="card-body">
-                    <div class="mb-3">
-                        <label for=""> Nama Item </label>
-                        <input type="text" v-model="model.name_item" class="form-control" />
-                    </div>
-                    <div class="mb-3">
-                        <label for=""> Unit </label>
-                        <input type="text" v-model="model.unit" class="form-control" />
-                    </div>
-                    <div class="mb-3">
-                        <label for=""> Stok </label>
-                        <input type="text" v-model="model.stok" class="form-control" />
-                    </div>
-                    <div class="mb-3">
-                        <label for=""> Harga Satuan </label>
-                        <input type="text" v-model="model.harga_satuan" class="form-control" />
-                    </div>
-                    <div class="mb-3">
-                        <label for=""> Barang </label> <br>
-                        <!-- <img :src="previewImg" v-if="previewImg" alt="" class="imgPreview"> <br> -->
-                        <img :src="model.barang" alt="" class="imgPreview"> <br>
-                        <!-- <input type="text" v-model="model.item.barang" class="form-control" /> -->
-                        <input type="file" v-on:change="upload" />
-                    </div>
-                    <div class="mb-3">
-                        <a href="/item">
-                            <button type="button" @click="updateItem" class="btn btn-primary">
-                                Update
-                            </button>
-                        </a>
-                        
-                        <RouterLink to="/item" class="btnBack btn btn-light"> Back </RouterLink>
-                    </div>
+                    <form action="">
+                        <div class="mb-3">
+                            <label for=""> Nama Item </label>
+                            <input type="text" v-model="model.name_item" class="form-control" />
+                        </div>
+                        <div class="mb-3">
+                            <label for=""> Unit </label>
+                            <input type="text" v-model="model.unit" class="form-control" />
+                        </div>
+                        <div class="mb-3">
+                            <label for=""> Stok </label>
+                            <input type="text" v-model="model.stok" class="form-control" />
+                        </div>
+                        <div class="mb-3">
+                            <label for=""> Harga Satuan </label>
+                            <input type="text" v-model="model.harga_satuan" class="form-control" />
+                        </div>
+                        <div class="mb-3">
+                            <label for=""> Barang </label> <br>
+                            <img :src="previewImg" v-if="previewImg" alt="" class="imgPreview"> <br>
+                            <img :src="model.barang" alt="" class="imgPreview"> <br>
+                            <!-- <input type="text" v-model="model.item.barang" class="form-control" /> -->
+                            <input type="file" @change="handleFileChange" />
+                        </div>
+                        <div class="mb-3">
+                            <a href="/item">
+                                <button type="button" @click="updateItem" class="btn btn-primary">
+                                    Update
+                                </button>
+                            </a>
+                            
+                            <RouterLink to="/item" class="btnBack btn btn-light"> Back </RouterLink>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -58,7 +60,7 @@ export default {
                 unit: '',
                 stok: '',
                 harga_satuan: '',
-                barang: '',
+                barang: null,
                 formData: null
             },
             previewImg: ''
@@ -73,29 +75,26 @@ export default {
     },
 
     methods: {
+        handleFileChange(e) {
+            this.model.barang = e.target.files[0]
+            console.log(this.model.barang);
+            this.previewImg = URL.createObjectURL(e.target.files[0])
+        },
         async getItem(itemId) {
             const item = await axios.get(`http://localhost:8080/api/item/${itemId}/edit`)
                 this.model = item.data.data
                 console.log(item.data.data);
                 
         },
-        updateItem() {
-            axios.put(`http://localhost:8080/api/item/${this.itemId}/update`, this.model).then((res) => {
-                console.log(res.data);
-                alert(res.data.message)
-
-            })
-            // .catch(function(err) {
-            //     if(err.res) {
-            //         if(err.res.status == 404) {
-            //             this.errList = err.res.data.err
-            //         }
-            //     } else if (err.request) {
-            //         console.log(err.request);
-            //     } else {
-            //         console.log('Error', err.message);
-            //     }
-            // })
+        async updateItem() {
+            this.model.formData = new FormData()
+            this.model.formData.append('name_item', this.model.name_item) 
+            this.model.formData.append('unit', this.model.unit)
+            this.model.formData.append('stok', this.model.stok)
+            this.model.formData.append('harga_satuan', this.model.harga_satuan)
+            this.model.formData.append('barang', this.model.barang)
+            await axios.put(`http://localhost:8080/api/item/${this.itemId}/update`, this.model.formData)
+            this.$router.push('/item')
         },
     }
 }

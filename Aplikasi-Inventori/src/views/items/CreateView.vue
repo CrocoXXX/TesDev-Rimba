@@ -79,7 +79,7 @@ export default {
             this.formData.append('harga_satuan', this.harga_satuan)
             this.formData.append('barang', this.barang)
             await axios.post('http://localhost:8080/api/item/file', this.formData)
-            console.log(this.formData.message)
+            // console.log(this.formData.message)
             this.$router.push('/item')
             // .then((res) => {
             //     console.log(res.data);

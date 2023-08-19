@@ -8,7 +8,7 @@
                     <h4>
                         items
                         <RouterLink to="/item/create" class="btn btn-primary float-end">
-                            Add Student
+                            Add Item
                         </RouterLink>
                     </h4>
                 </div>

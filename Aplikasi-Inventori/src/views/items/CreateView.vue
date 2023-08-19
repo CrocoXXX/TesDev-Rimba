@@ -15,11 +15,11 @@
                         </div>
                         <div class="mb-3">
                             <label for=""> Unit </label>
-                            <input type="text" v-model="unit" class="form-control" />
-                            <!-- <select class="form-select" v-model="model.item.unit" aria-label="Default select example">
-                                <option selected="1"> KG </option>
-                                <option value="2"> PCS </option>
-                            </select> -->
+                            <!-- <input type="text" v-model="unit" class="form-control" /> -->
+                            <select class="form-select" v-model="unit" aria-label="Default select example">
+                                <option value="kg"> KG </option>
+                                <option value="pcs"> PCS </option>
+                            </select>
                         </div>
                         <div class="mb-3">
                             <label for=""> Stok </label>

@@ -1,0 +1,16 @@
+[
+    {
+        "name_item": "Kulkas",
+        "unit": "kg",
+        "stok": "5",
+        "harga_satuan": 2000000,
+        "barang": "Gambar Kulkas"
+    },
+    {
+        "name_item": "Televisi",
+        "unit": "kg",
+        "stok": "2",
+        "harga_satuan": 1000000,
+        "barang": "Gambar Televisi"
+    }
+]

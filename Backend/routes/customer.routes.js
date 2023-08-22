@@ -1,10 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const Controller = require("../controllers/customer.controller");
-// const fileMulter = require('../middleware/multerFile')
+const fileMulterKTP = require('../middleware/multerKTPFile')
 
 router.get("/", Controller.getCustomer);
-router.post("/", Controller.createCustomer);
+router.post("/", fileMulterKTP.single('ktp'), Controller.createCustomer);
 // router.post("/file", fileMulter.single('barang') ,Controller.createItemPhoto);
 // router.get("/:id/edit", Controller.editItem);
 router.put("/:id", Controller.updateCustomer);

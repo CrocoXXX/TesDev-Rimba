@@ -20,11 +20,21 @@ class Controller {
     // Create Customer
     static async createCustomer(req, res) {
         try {
-            const {nama, kontak, email, alamat, diskon, tipe_diskon, ktp} = req.body
+            const {nama, kontak, email, alamat, diskon, tipe_diskon} = req.body
+            let dataCustomer = {
+                nama, kontak, email, alamat, diskon, tipe_diskon
+            }
 
-            const customer = await Customer.create({
-                nama, kontak, email, alamat, diskon, tipe_diskon, ktp
-            })
+            if(req.file) {
+                const imageUrl = `http://localhost:8080/${req.file.path.replace(/\\/g, "/")}`
+console.log(req.file.path.replace(/\\/g, "/"));
+                dataCustomer = {
+                    ...dataCustomer,
+                    ktp: imageUrl,
+                }
+            }
+
+            const customer = await Customer.create(dataCustomer)
 
             res.status(200).json({
                 message: `New Customer with id ${customer.id} created.`

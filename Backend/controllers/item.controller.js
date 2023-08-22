@@ -49,7 +49,7 @@ class Controller {
 
             if(req.file) {
                 const imageUrl = `http://localhost:8080/${req.file.path.replace(/\\/g, "/")}`
-                console.log(req.file.path.replace(/\\/g, "/"));
+                // console.log(req.file.path.replace(/\\/g, "/"));
                 dataItem = {
                     ...dataItem,
                     barang: imageUrl,

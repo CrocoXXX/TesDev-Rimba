@@ -27,7 +27,7 @@ class Controller {
             const item = await Item.create({name_item, unit, stok, harga_satuan, barang})
             
             res.status(200).json({
-                message: `New Category with id ${item.id} created.`
+                message: `New Item with id ${item.id} created.`
             })
         } catch (error) {
             res.status(500).json({
@@ -59,7 +59,7 @@ class Controller {
             const item = await Item.create(dataItem)
             
             res.status(200).json({
-                message: `New Category with id ${item.id} created.`
+                message: `New Item with id ${item.id} created.`
             })
         } catch (error) {
             res.status(500).json({
@@ -117,7 +117,7 @@ class Controller {
             
             await Item.update(dataItem ,{ where: {id: req.params.id}})
 
-            res.status(200).json({ message: `Category with id ${item.id} updated` });
+            res.status(200).json({ message: `Items with id ${item.id} updated` });
             
         } catch (error) {
             res.status(500).json({
@@ -139,7 +139,7 @@ class Controller {
 
             Item.destroy({ where: { id: req.params.id } });
 
-            res.status(200).json({ message: `Category with id ${item.id} deleted` });
+            res.status(200).json({ message: `Items with id ${item.id} deleted` });
         } catch (error) {
             res.status(500).json({
                 error: 'Failed to fetch Item'

@@ -1,0 +1,20 @@
+[
+    {
+        "nama": "Adi",
+        "kontak": "08888888",
+        "email": "adi@gmail.com",
+        "alamat": "jakarta",
+        "diskon": 10,
+        "tipe_diskon": "persentase",
+        "ktp": "ktp adi"
+    },
+    {
+        "nama": "mentari",
+        "kontak": "08888888",
+        "email": "mentari@gmail.com",
+        "alamat": "jakarta",
+        "diskon": 100000,
+        "tipe_diskon": "fix_diskon",
+        "ktp": "ktp mentari"
+    }
+]

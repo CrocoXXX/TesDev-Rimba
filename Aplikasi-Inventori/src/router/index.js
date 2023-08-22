@@ -4,9 +4,14 @@ import ItemView from '../views/items/ItemView.vue'
 import CreateItemView from '../views/items/CreateView.vue'
 import EditItemView from '../views/items/EditView.vue'
 
+import CustomerView from '../views/customers/CustomerView.vue'
+import CreateCustomerView from "../views/customers/CreateCustomer.vue";
+import UpdateCustomerView from "../views/customers/EditCustomer.vue";
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
+    // Items
     {
       path: '/item',
       name: 'item',
@@ -21,6 +26,23 @@ const router = createRouter({
       path: '/item/:id/edit',
       name: 'itemEdit',
       component: EditItemView
+    },
+
+    // Customers
+    {
+      path: '/customer',
+      name: 'customer',
+      component: CustomerView
+    },
+    {
+      path: '/customer/create',
+      name: 'customerCreate',
+      component: CreateCustomerView
+    },
+    {
+      path: '/customer/:id/update',
+      name: 'customerUpdate',
+      component: UpdateCustomerView
     },
     {
       path: '/',

@@ -18,7 +18,7 @@
         <span class="material-icons"> category </span>
         <span class="text"> Items </span>
       </RouterLink>
-      <RouterLink class="button" to="/about">
+      <RouterLink class="button" to="/customer">
         <span class="material-icons"> people </span>
         <span class="text"> Customer </span>
       </RouterLink>

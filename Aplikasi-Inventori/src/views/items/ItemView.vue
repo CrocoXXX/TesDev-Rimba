@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="card-header">
                     <h4>
-                        items
+                        Items
                         <RouterLink to="/item/create" class="btn btn-primary float-end">
                             Add Item
                         </RouterLink>

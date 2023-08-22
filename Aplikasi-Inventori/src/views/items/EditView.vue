@@ -86,8 +86,8 @@ export default {
         },
         async getItem(itemId) {
             const item = await axios.get(`http://localhost:8080/api/item/${itemId}/edit`)
-                this.model = item.data.data
-                console.log(item.data.data);
+            this.model = item.data.data
+            console.log(item.data.data);
                 
         },
         async updateItem() {

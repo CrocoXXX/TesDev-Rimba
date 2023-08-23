@@ -5,9 +5,8 @@ const fileMulterKTP = require('../middleware/multerKTPFile')
 
 router.get("/", Controller.getCustomer);
 router.post("/", fileMulterKTP.single('ktp'), Controller.createCustomer);
-// router.post("/file", fileMulter.single('barang') ,Controller.createItemPhoto);
-// router.get("/:id/edit", Controller.editItem);
-router.put("/:id", Controller.updateCustomer);
+router.get("/:id/edit", Controller.editCustomer);
+router.put("/:id/update", fileMulterKTP.single('ktp'), Controller.updateCustomer);
 router.delete("/:id", Controller.deleteCustomer);
 
 module.exports = router;

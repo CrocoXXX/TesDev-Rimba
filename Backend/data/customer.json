@@ -6,7 +6,7 @@
         "alamat": "jakarta",
         "diskon": 10,
         "tipe_diskon": "persentase",
-        "ktp": "ktp adi"
+        "ktp": "http://localhost:8080/uploadsKTP/ktp-1692757008804-ppl.jpg"
     },
     {
         "nama": "mentari",
@@ -15,6 +15,6 @@
         "alamat": "jakarta",
         "diskon": 100000,
         "tipe_diskon": "fix_diskon",
-        "ktp": "ktp mentari"
+        "ktp": "http://localhost:8080/uploadsKTP/ktp-1692756661985-pbp.jpg"
     }
 ]

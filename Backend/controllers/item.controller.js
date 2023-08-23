@@ -98,7 +98,7 @@ class Controller {
                 })
             }
             
-            const {name_item, unit, stok, harga_satuan, barang} = req.body
+            const {name_item, unit, stok, harga_satuan} = req.body
             let dataItem = {
                 name_item,
                 unit, 

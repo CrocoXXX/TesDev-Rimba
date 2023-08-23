@@ -27,7 +27,7 @@ class Controller {
 
             if(req.file) {
                 const imageUrl = `http://localhost:8080/${req.file.path.replace(/\\/g, "/")}`
-console.log(req.file.path.replace(/\\/g, "/"));
+                // console.log(req.file.path.replace(/\\/g, "/"));
                 dataCustomer = {
                     ...dataCustomer,
                     ktp: imageUrl,
@@ -46,6 +46,26 @@ console.log(req.file.path.replace(/\\/g, "/"));
         }
     }
 
+    // Edit Customer
+    static async editCustomer(req, res) {
+        try {
+            const customer = await Customer.findByPk(req.params.id);
+
+            if(!customer) {
+                res.status(404).json({
+                    error: 'Customer not found.'
+                })
+            }
+
+            res.status(200).json({ data: customer })
+
+        } catch (error) {
+            res.status(500).json({
+                error: 'Failed to fetch Customer'
+            })
+        }
+    }
+
     // Update Customer
     static async updateCustomer(req, res) {
         try {
@@ -57,9 +77,20 @@ console.log(req.file.path.replace(/\\/g, "/"));
                 })
             }
 
-            const {nama, kontak, email, alamat, diskon, tipe_diskon, ktp} = req.body
+            const {nama, kontak, email, alamat, diskon, tipe_diskon} = req.body
+            let dataCustomer = {
+                nama, kontak, email, alamat, diskon, tipe_diskon
+            }
 
-            await Customer.update({nama, kontak, email, alamat, diskon, tipe_diskon, ktp}, {where: {id: req.params.id}})
+            if(req.file) {
+                const imageUrl = `http://localhost:8080/${req.file.path.replace(/\\/g, "/")}`
+                dataCustomer = {
+                    ...dataCustomer,
+                    ktp: imageUrl,
+                }
+            }
+
+            await Customer.update(dataCustomer, {where: {id: req.params.id}})
 
             res.status(200).json({ message: `Customers with id ${customer.id} updated` });
 

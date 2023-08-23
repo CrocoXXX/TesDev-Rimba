@@ -6,7 +6,7 @@ import EditItemView from '../views/items/EditView.vue'
 
 import CustomerView from '../views/customers/CustomerView.vue'
 import CreateCustomerView from "../views/customers/CreateCustomer.vue";
-import UpdateCustomerView from "../views/customers/EditCustomer.vue";
+import EditCustomerView from "../views/customers/EditCustomer.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -40,9 +40,9 @@ const router = createRouter({
       component: CreateCustomerView
     },
     {
-      path: '/customer/:id/update',
-      name: 'customerUpdate',
-      component: UpdateCustomerView
+      path: '/customer/:id/edit',
+      name: 'customerEdit',
+      component: EditCustomerView
     },
     {
       path: '/',

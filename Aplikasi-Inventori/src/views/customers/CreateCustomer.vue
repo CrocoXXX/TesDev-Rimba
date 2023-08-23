@@ -8,31 +8,31 @@
                     <h4> Add Customers </h4>
                 </div>
                 <div class="card-body">
-                    <form action="" @submit.prevent="saveItem">
+                    <form action="" @submit.prevent="saveCustomer">
                         <div class="mb-3">
                             <label for=""> Nama Customer </label>
-                            <input type="text" v-model="name_item" class="form-control" required />
+                            <input type="text" v-model="nama" class="form-control" required />
                         </div>
                         <div class="mb-3">
                             <label for=""> Kontak </label>
-                            <input type="text" v-model="name_item" class="form-control" required />
+                            <input type="text" v-model="kontak" class="form-control" required />
                         </div>
                         <div class="mb-3">
                             <label for=""> Email </label>
-                            <input type="text" v-model="name_item" class="form-control" required />
+                            <input type="text" v-model="email" class="form-control" required />
                         </div>
                         <div class="mb-3">
                             <label for=""> Alamat </label>
-                            <input type="text" v-model="name_item" class="form-control" required />
+                            <input type="text" v-model="alamat" class="form-control" required />
                         </div>
                         <div class="mb-3">
                             <label for=""> Diskon </label>
-                            <input type="text" v-model="name_item" class="form-control" required />
+                            <input type="text" v-model="diskon" class="form-control" required />
                         </div>
                         <div class="mb-3">
                             <label for=""> Tipe Diskon </label>
                             <!-- <input type="text" v-model="unit" class="form-control" /> -->
-                            <select class="form-select" v-model="unit" aria-label="Default select example">
+                            <select class="form-select" v-model="tipe_diskon" aria-label="Default select example">
                                 <option value="persentase"> Percentase </option>
                                 <option value="fix_diskon"> Fix Diskon </option>
                             </select>
@@ -80,6 +80,20 @@ export default {
         handleFileChange(e) {
             this.ktp = e.target.files[0]
             this.previewImg = URL.createObjectURL(e.target.files[0])
+        },
+
+        async saveCustomer() {
+            this.formData = new FormData()
+            this.formData.append('nama', this.nama)
+            this.formData.append('kontak', this.kontak)
+            this.formData.append('email', this.email)
+            this.formData.append('alamat', this.alamat)
+            this.formData.append('diskon', this.diskon)
+            this.formData.append('tipe_diskon', this.tipe_diskon)
+            this.formData.append('ktp', this.ktp)
+
+            await axios.post('http://localhost:8080/api/customer', this.formData)
+            this.$router.push('/customer')
         }
     }
 }

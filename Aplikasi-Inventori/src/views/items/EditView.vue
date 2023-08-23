@@ -5,10 +5,10 @@
         <div class="container mt-5">
             <div class="card">
                 <div class="card-header">
-                    <h4> Add Items </h4>
+                    <h4> Update Items </h4>
                 </div>
                 <div class="card-body">
-                    <form action="">
+                    <form action="" @submit.prevent="updateItem">
                         <div class="mb-3">
                             <label for=""> Nama Item </label>
                             <input type="text" v-model="model.name_item" class="form-control" />
@@ -38,7 +38,7 @@
                         </div>
                         <div class="mb-3">
                             <a href="/item">
-                                <button type="button" @click="updateItem" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary">
                                     Update
                                 </button>
                             </a>
@@ -75,7 +75,7 @@ export default {
         // this.saveItem()
         // console.log(this.$route.params.id);
         this.itemId = this.$route.params.id
-        this.getItem(this.$route.params.id)
+        this.getItem(this.itemId)
     },
 
     methods: {
@@ -87,7 +87,7 @@ export default {
         async getItem(itemId) {
             const item = await axios.get(`http://localhost:8080/api/item/${itemId}/edit`)
             this.model = item.data.data
-            console.log(item.data.data);
+            console.log(this.model);
                 
         },
         async updateItem() {

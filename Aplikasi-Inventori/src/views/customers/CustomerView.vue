@@ -36,9 +36,12 @@
                                 <td> {{customer.alamat}} </td>
                                 <td> {{customer.diskon}} </td>
                                 <td> {{customer.tipe_diskon}} </td>
-                                <td> {{customer.ktp}} </td>
+                                <td> 
+                                    <!-- {{customer.ktp}} -->
+                                    <img :src="customer.ktp" alt="" class="imgPreview">
+                                </td>
                                 <td>
-                                    <RouterLink :to="{path: '/customer/'+customer.id+'/update'}" class="btn btn-success">
+                                    <RouterLink :to="{path: '/customer/'+customer.id+'/edit'}" class="btn btn-success">
                                         Edit
                                     </RouterLink>
                                     <button type="button" @click="deleteCustomer(customer.id)" class="btnDelete btn btn-danger">

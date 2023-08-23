@@ -1,0 +1,20 @@
+[
+    {
+        "code_transaksi": "SL-01",
+        "CustomerId": 1,
+        "ItemId": 1,
+        "quantity": 2,
+        "total_diskon": 10000,
+        "total_harga": 2000000,
+        "total_bayar": 2500000
+    },
+    {
+        "code_transaksi": "SL-02",
+        "CustomerId": 2,
+        "ItemId": 2,
+        "quantity": 5,
+        "total_diskon": 100000,
+        "total_harga": 200000,
+        "total_bayar": 250000
+    }
+]

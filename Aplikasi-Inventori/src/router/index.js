@@ -8,6 +8,8 @@ import CustomerView from '../views/customers/CustomerView.vue'
 import CreateCustomerView from "../views/customers/CreateCustomer.vue";
 import EditCustomerView from "../views/customers/EditCustomer.vue";
 
+import SalesView from '../views/sales/SalesView.vue'
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -43,6 +45,13 @@ const router = createRouter({
       path: '/customer/:id/edit',
       name: 'customerEdit',
       component: EditCustomerView
+    },
+
+    // Sales
+    {
+      path: '/sales',
+      name: 'sales',
+      component: SalesView
     },
     {
       path: '/',

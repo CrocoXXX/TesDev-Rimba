@@ -14,6 +14,10 @@
 
     <h3> Menu </h3>
     <div class="menu">
+      <RouterLink class="button" to="/">
+        <span class="material-icons"> home </span>
+        <span class="text"> Sales </span>
+      </RouterLink>
       <RouterLink class="button" to="/item">
         <span class="material-icons"> category </span>
         <span class="text"> Items </span>
@@ -22,7 +26,7 @@
         <span class="material-icons"> people </span>
         <span class="text"> Customer </span>
       </RouterLink>
-      <RouterLink class="button" to="/">
+      <RouterLink class="button" to="/sales">
         <span class="material-icons"> paid </span>
         <span class="text"> Sales </span>
       </RouterLink>

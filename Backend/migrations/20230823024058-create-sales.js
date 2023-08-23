@@ -10,11 +10,12 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       code_transaksi: {
-        allowNull: false,
         type: Sequelize.STRING
       },
       tanggal_transaksi: {
-        type: Sequelize.DATE
+        allowNull: false,
+        type: Sequelize.DATE,
+        defaultValue: new Date()
       },
       CustomerId: {
         type: Sequelize.INTEGER,

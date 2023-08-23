@@ -36,9 +36,19 @@
                                 <td> {{sales.Customer.nama }} </td>
                                 <td> {{sales.Item.name_item}} </td>
                                 <td> {{sales.quantity }} </td>
-                                <td> {{sales.Customer.diskon }} </td>
-                                <td> {{sales.Item.harga_satuan }} </td>
-                                <td> {{sales.total_bayar }} </td>
+                                <td v-if="sales.Customer.tipe_diskon === 'persentase'"> 
+                                    {{(sales.Customer.diskon/100) * sales.Item.harga_satuan }}
+                                </td>
+                                <td v-else>
+                                    {{sales.Customer.diskon}}
+                                </td>
+                                <td v-if="sales.Customer.tipe_diskon === 'persentase'">
+                                    {{sales.Item.harga_satuan * sales.quantity - ((sales.Customer.diskon/100) * sales.Item.harga_satuan) }}
+                                </td>
+                                <td v-else>
+                                    {{(sales.Item.harga_satuan * sales.quantity) - sales.Customer.diskon}}
+                                </td>
+                                <td> {{sales.quantity * sales.Item.harga_satuan}} </td>
                                 <td>
                                     <RouterLink to="{path: '/item/'+item.id+'/edit'}" class="btn btn-success">
                                         Edit

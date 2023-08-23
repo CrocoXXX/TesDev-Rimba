@@ -46,12 +46,11 @@
                         <div class="mb-3" v-if="formData.ItemId">
                             <label for=""> Total Harga </label>
                             <input type="text" v-model="selectedItemData(formData.ItemId).harga_satuan" class="form-control" :placeholder="selectedItemData(formData.ItemId).harga_satuan" readonly />
-                            <!-- <input type="text" :value="item.harga_satuan" class="form-control" readonly /> -->
                         </div>
-                        <div class="mb-3">
+                        <!-- <div class="mb-3">
                             <label for=""> Total Keseluruhan </label>
                             <input type="text" v-model="formData.total_bayar" :placeholder="selectedCustomerData(formData.CustomerId).diskon * selectedItemData(formData.ItemId).harga_satuan" class="form-control" readonly />
-                        </div>
+                        </div> -->
                         
                         <div class="mb-3">
                             <button type="submit" class="btn btn-primary">
@@ -100,7 +99,7 @@ export default {
                 quantity: '',
                 // total_diskon: '',
                 // total_harga: '',
-                total_bayar: 0,
+                // total_bayar: '',
             },
 
             customers: [],

@@ -34,16 +34,16 @@
                                 <td> {{sales.code_transaksi }} </td>
                                 <td> {{sales.tanggal_transaksi }} </td>
                                 <td> {{sales.Customer.nama }} </td>
-                                <td> {{sales.Item.name_item }} </td>
+                                <td> {{sales.Item.name_item}} </td>
                                 <td> {{sales.quantity }} </td>
-                                <td> {{sales.total_diskon }} </td>
-                                <td> {{sales.total_harga }} </td>
+                                <td> {{sales.Customer.diskon }} </td>
+                                <td> {{sales.Item.harga_satuan }} </td>
                                 <td> {{sales.total_bayar }} </td>
                                 <td>
                                     <RouterLink to="{path: '/item/'+item.id+'/edit'}" class="btn btn-success">
                                         Edit
                                     </RouterLink>
-                                    <button type="button" @click="deleteItem(item.id)" class="btnDelete btn btn-danger">
+                                    <button type="button" @click="deleteSales(sales.id)" class="btnDelete btn btn-danger">
                                         Delete
                                     </button>
                                 </td>
@@ -83,12 +83,11 @@ export default {
             console.log(this.sales);
         },
 
-        deleteSales(id) {
+        async deleteSales(id) {
             if(confirm(`Apakah kamu yakin ingin menghapus data ini?`)) {
-                axios.delete(`http://localhost:8080/api/sales/${id}`).then((res) => {
-                    alert(res.data.message)
-                    this.getSales()
-                })
+                axios.delete(`http://localhost:8080/api/sales/${id}`)
+
+                this.getSales()
             }
         }
     }

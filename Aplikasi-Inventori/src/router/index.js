@@ -9,6 +9,7 @@ import CreateCustomerView from "../views/customers/CreateCustomer.vue";
 import EditCustomerView from "../views/customers/EditCustomer.vue";
 
 import SalesView from '../views/sales/SalesView.vue'
+import CreateSalesView from '../views/sales/CreateSales.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -53,6 +54,13 @@ const router = createRouter({
       name: 'sales',
       component: SalesView
     },
+    {
+      path: '/sales/create',
+      name: 'salesCreate',
+      component: CreateSalesView
+    },
+
+    // HomePage
     {
       path: '/',
       name: 'home',
